@@ -1,0 +1,50 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: false  #docker pe nahi hoga push
+  artifacts:
+    - image: 26084294/blogpost
+      context: blogpost
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .  #stores update at this container location only
+            src: '*.js' #data is from all js files 
+    - image: 26084294/blogcomment
+      context: blogcomment
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .  #stores update at this container location only
+            src: '*.js'  #data is from all js files 
+    - image: 26084294/eventbus
+      context: eventbus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .  #stores update at this container location only
+            src: '*.js'  #data is from all js files 
+    - image: 26084294/queryservice
+      context: QueryService
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .  #stores update at this container location only
+            src: '*.js'  #data is from all js files 
+    - image: 26084294/bloguiapp
+      context: ui   #foldername
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .  #stores update at this container location only
+            src: 'src/**/*.js'  #data is from all js files 
