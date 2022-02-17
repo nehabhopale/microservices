@@ -1,0 +1,22 @@
+version: '3'
+services:
+  blogpost:
+    image: 26084294/blogpost
+    ports:
+      - 4001:4001
+  blogcomment:
+    image: 26084294/blogcomment
+    ports:
+      - 4002:4002
+  eventbus:
+    image: 26084294/eventbus
+    ports:
+      - 4005:4005
+  queryService:
+    image: 26084294/queryservice
+    ports:
+      - 4003:4003
+  blogapp:
+    image: 26084294/bloguiapp
+    ports:
+      - 3000:3000
