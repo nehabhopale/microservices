@@ -21,7 +21,7 @@ app.post('/api/v1/blog/post',async(req,resp)=>{
     const id= uuid.v4();
     posts[id]={id,title}
 
-    await axios.post("http://eventbus:4005/eventbus/event",{
+    await axios.post("http://eventbus-service:4005/eventbus/event",{
         type:"Post Created",
         data:{id,title}
     }).catch(e=>console.log(e.message))

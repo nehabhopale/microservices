@@ -26,7 +26,7 @@ metadata:
   name: query-service
 spec:
   selector:
-    app: posts
+    app: query
   ports:
   - protocol: TCP
     port: 4003

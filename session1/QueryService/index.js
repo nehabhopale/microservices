@@ -34,7 +34,7 @@ app.post('/eventbus/event/listner',(req,resp)=>{
 })
 
 app.listen(4003,async()=>{
-     const resp=await axios.get('http://eventbus:4005/eventbus/event')
+     const resp=await axios.get('http://eventbus-service:4005/eventbus/event')
      console.log(resp)
     const events =resp.data|| [];
     for (let e of events){
